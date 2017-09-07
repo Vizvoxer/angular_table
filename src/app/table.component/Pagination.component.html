@@ -75,6 +75,7 @@
 
   <div class="c-data-size"
        *ngIf="p.dataLength > minRowsOnPage">
+    <form>
     <span class="c-data-size__header">
       Набор данных:
     </span>
@@ -113,6 +114,7 @@
       <input
         type="number"
         min="1"
+        name="customSize"
         [(ngModel)]="customSize"
         *ngIf="displayCustom == 15">
       <button
@@ -121,5 +123,6 @@
         Установить
       </button>
     </div>
+    </form>
   </div>
 </paginator-navigator>

@@ -9,6 +9,7 @@ import {Pagination} from "./table.component/Pagination.component";
 import {FormsModule} from "@angular/forms";
 import {DataService} from "./table.component/DataService";
 import {DataFilterPipe} from "./table.component/Data-filter.pipe";
+import { AppContainerComponent} from "./app.container";
 
 @NgModule({
   declarations: [
@@ -17,13 +18,16 @@ import {DataFilterPipe} from "./table.component/Data-filter.pipe";
     DefaultSorter,
     PaginatorNavigator,
     Pagination,
-    DataFilterPipe
+    DataFilterPipe,
+    AppContainerComponent
   ],
   imports: [
     BrowserModule,
     CommonModule,
     FormsModule
   ],
+  entryComponents: [AppComponent],
+
   exports: [
     DataTable,
     DefaultSorter,
@@ -31,6 +35,6 @@ import {DataFilterPipe} from "./table.component/Data-filter.pipe";
     Pagination
   ],
   providers: [DataService, PaginatorNavigator],
-  bootstrap: [AppComponent]
+  bootstrap: [AppContainerComponent]
 })
 export class AppModule { }
