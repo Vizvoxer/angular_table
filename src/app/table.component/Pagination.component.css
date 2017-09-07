@@ -1,0 +1,9 @@
+.c-pagination__item{
+  list-style: none;
+  display:inline;
+}
+
+.c-pagination__item--active{
+  color:rgb(130,130,220);
+  font-weight:bold;
+}

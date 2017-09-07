@@ -1,16 +1,36 @@
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
-
 import { AppComponent } from './app.component';
+import {CommonModule} from "@angular/common";
+import {DataTable} from "./table.component/DataTable";
+import {DefaultSorter} from "./table.component/DefaultSorter";
+import {PaginatorNavigator} from "./table.component/Paginator";
+import {Pagination} from "./table.component/Pagination.component";
+import {FormsModule} from "@angular/forms";
+import {DataService} from "./table.component/DataService";
+import {DataFilterPipe} from "./table.component/Data-filter.pipe";
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
+    DataTable,
+    DefaultSorter,
+    PaginatorNavigator,
+    Pagination,
+    DataFilterPipe
   ],
   imports: [
-    BrowserModule
+    BrowserModule,
+    CommonModule,
+    FormsModule
   ],
-  providers: [],
+  exports: [
+    DataTable,
+    DefaultSorter,
+    PaginatorNavigator,
+    Pagination
+  ],
+  providers: [DataService, PaginatorNavigator],
   bootstrap: [AppComponent]
 })
 export class AppModule { }

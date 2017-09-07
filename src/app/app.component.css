@@ -1,0 +1,11 @@
+.c-table{
+  border:1px solid black;
+}
+.c-table__cell--filter{
+  padding:5px 0;
+}
+
+.c-table__row:nth-of-type(even){
+  background-color: rgba(80,80,190,0.1);
+}
+

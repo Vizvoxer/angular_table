@@ -1,0 +1,125 @@
+<paginator-navigator #p [table]="table">
+  <ul class="c-pagination" *ngIf="dataService.displayTables">
+    <li class="c-pagination__item">
+      <a class="page-link" style="cursor: pointer">&laquo;</a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage > 4 && p.activePage + 1 > p.lastPage"
+        (click)="p.setPage(p.activePage - 4)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage-4}}
+      </a>
+    </li>
+    <li
+      class="c-pagination__item"
+      *ngIf="p.activePage > 3 && p.activePage + 2 > p.lastPage"
+      (click)="p.setPage(p.activePage - 3)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage-3}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage > 2"
+        (click)="p.setPage(p.activePage - 2)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage-2}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage > 1"
+        (click)="p.setPage(p.activePage - 1)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage-1}}
+      </a>
+    </li>
+    <li class="c-pagination__item c-pagination__item--active">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage + 1 <= p.lastPage"
+        (click)="p.setPage(p.activePage + 1)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage+1}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage + 2 <= p.lastPage"
+        (click)="p.setPage(p.activePage + 2)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage+2}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage + 3 <= p.lastPage && p.activePage < 3"
+        (click)="p.setPage(p.activePage + 3)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage+3}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        *ngIf="p.activePage + 4 <= p.lastPage && p.activePage < 2"
+        (click)="p.setPage(p.activePage + 4)">
+      <a class="page-link" style="cursor: pointer">
+        {{p.activePage+4}}
+      </a>
+    </li>
+    <li class="c-pagination__item"
+        (click)="p.setPage(p.lastPage)">
+      <a class="page-link" style="cursor: pointer">
+        &raquo;
+      </a>
+    </li>
+  </ul>
+
+  <div class="c-data-size"
+       *ngIf="p.dataLength > minRowsOnPage">
+    <span class="c-data-size__header">
+      Набор данных:
+    </span>
+    <div>
+      <label>
+        <input type="radio"
+                        class="c-data-size__item"
+                        name="quantity"
+                        value="5"
+                        [(ngModel)]="displayCustom"
+                        [class.active]="p.rowsOnPage===5" (click)="p.setRowsOnPage(5)">
+      5
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="radio"
+                        class="c-data-size__item"
+                        name="quantity"
+                        value="10"
+                        [(ngModel)]="displayCustom"
+                        [class.active]="p.rowsOnPage===10" (click)="p.setRowsOnPage(10)">
+      10
+      </label>
+    </div>
+    <div>
+      <label>
+        <input type="radio"
+                        class="c-data-size__item"
+                        name="quantity"
+                        value="15"
+                        [(ngModel)]="displayCustom"
+                        [class.active]="p.rowsOnPage=== customSize">
+      Свой
+    </label>
+      <input
+        type="number"
+        min="1"
+        [(ngModel)]="customSize"
+        *ngIf="displayCustom == 15">
+      <button
+        (click)="p.setRowsOnPage(customSize)"
+        *ngIf="displayCustom == 15">
+        Установить
+      </button>
+    </div>
+  </div>
+</paginator-navigator>
